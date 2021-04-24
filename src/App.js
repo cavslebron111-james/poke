@@ -1,26 +1,38 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React,{Component} from 'react';
+import Navbar from './component/Navbar'
+import {BrowserRouter,Route,Switch} from 'react-router-dom';
+import sampleHome from './component/sampleHome';
+import Contact from './component/Contact';
+import About from './component/About';
+import Post from './component/Post';
+import Mycart from './component/Mycart';
+import EmptyCart from '../src/component/EmptyCart.';
+//import Modal from '../src/component/Modal';
 
-function App() {
+import 'bootstrap/dist/css/bootstrap.min.css';
+
+class App extends Component  {
+  render() {
   return (
+    
+    <BrowserRouter>
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+     <Navbar />
+     <Switch>
+     <Route exact path = '/' component={sampleHome} />
+     <Route path = '/About' component={About} />
+     <Route path = '/Contact' component={Contact} />
+     <Route path = '/Mycart' component={Mycart} />
+     <Route path = '/EmptyCart' component={EmptyCart} />
+     <Route path = '/:Post_id' component={Post} />
+     
+     
+     </Switch>
+     
+    
+     </div>
+    </BrowserRouter>
   );
 }
-
+}
 export default App;
